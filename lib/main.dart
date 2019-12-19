@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'question.dart';
 import 'quiz_bank.dart';
 
 QuizBank quizBank = QuizBank();
@@ -15,7 +14,7 @@ class Quizzler extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: QuizPage(),
-          ),//
+          ),
         ),
       ),
     );
@@ -64,6 +63,7 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   List<Icon> scoreKeeper = [
+    //contains list of score icons
     /* Icon(
       Icons.check,
       color: Colors.green,
@@ -86,47 +86,14 @@ class _QuizPageState extends State<QuizPage> {
     ), */
   ];
 
-  List<String> questions = [
-    'You can lead a cow down stairs but not up stairs.',
-    'Approximately one quarter of human bones are in the feet.',
-    'A slug\'s blood is green.',
-  ];
-
-  List<bool> answers = [false, true, true];
-//challenge create list of question using the Question and answers
-  /*
-  Question q1 = Question(
-      q: 'You can lead a cow down stairs but not up stairs.', a: false);
-  List<Question> questionAnswers = [
-    Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
-    Question(
-        q: 'Approximately one quarter of human bones are in the feet', a: true),
-    Question(q: 'A slug\'s blood is green.', a: true)
-  ];
-  */
-
-  //print (q1.questionText);
-  //print q1.queestionAnswer);
-  //challenge convert list of questions into it's own question class(quiz_brain.dart).
-
   int questionNumber = 0;
   QuizBank quizQuestions;
-
-
-  int incrementQuestionNumber(int q) {
-    if (q > questions.length - 2) {
-      q = 0;
-    } else {
-      q++;
-    }
-
-    return q;
-  }
 
   //try to make it end the game or start over after it reaches last question
   int incrementQuestionNumber2(int q) {
     if (q > quizBank.allQuestions.length - 2) {
       q = 0;
+      scoreKeeper.clear();
     } else {
       q++;
     }
@@ -173,8 +140,6 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
-
-                // bool correctAnswer = answers[questionNumber];
                 bool correctAnswer =
                     quizBank.allQuestions[questionNumber].myAnswer;
 
@@ -185,7 +150,6 @@ class _QuizPageState extends State<QuizPage> {
                 }
 
                 setState(() {
-                  //questionNumber = incrementQuestionNumber(questionNumber);
                   questionNumber = incrementQuestionNumber2(questionNumber);
                   print(questionNumber);
                   setIcon(correctAnswer);
@@ -234,4 +198,3 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 }
-
