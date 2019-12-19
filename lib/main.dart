@@ -64,30 +64,9 @@ class _QuizPageState extends State<QuizPage> {
 
   List<Icon> scoreKeeper = [
     //contains list of score icons
-    /* Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    ), */
   ];
 
   int questionNumber = 0;
-  QuizBank quizQuestions;
 
   //try to make it end the game or start over after it reaches last question
   int incrementQuestionNumber2(int q) {
