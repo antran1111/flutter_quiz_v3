@@ -28,6 +28,42 @@ class QuizPage extends StatefulWidget {
 
 ////
 class _QuizPageState extends State<QuizPage> {
+
+  void checkAnswer (bool userAnswers,bool correctAnswer) {
+
+    if (userAnswers == correctAnswer) {
+      print('user got it right!');
+      setIconTrue();
+    } else {
+      print('user got it wrong');
+      setIconFalse2();
+    }
+
+    setState(() {
+      questionNumber = incrementQuestionNumber2(questionNumber);
+      print(questionNumber);
+      //setIcon(correctAnswer);
+    });
+
+  }
+  void setIconTrue() {
+      scoreKeeper.add(
+        Icon(
+          Icons.check,
+          color: Colors.green,
+        ),
+      );
+  }
+
+  void setIconFalse2() {
+    scoreKeeper.add(
+      Icon(
+        Icons.delete_forever,
+        color: Colors.red,
+      ),
+    );
+  }
+
   void setIcon(bool c) {
     if (c)
       scoreKeeper.add(
@@ -121,8 +157,8 @@ class _QuizPageState extends State<QuizPage> {
                 //The user picked true.
                 bool correctAnswer =
                     quizBank.allQuestions[questionNumber].myAnswer;
-
-                if (correctAnswer == true) {
+              checkAnswer(true, correctAnswer);
+                /*if (correctAnswer == true) {
                   print('user got it right!');
                 } else {
                   print('user got it wrong');
@@ -132,7 +168,7 @@ class _QuizPageState extends State<QuizPage> {
                   questionNumber = incrementQuestionNumber2(questionNumber);
                   print(questionNumber);
                   setIcon(correctAnswer);
-                });
+                });*/
               },
             ),
           ),
@@ -153,6 +189,7 @@ class _QuizPageState extends State<QuizPage> {
                 // bool correctAnswer = answers[questionNumber];
                 bool correctAnswer =
                     quizBank.allQuestions[questionNumber].myAnswer;
+                checkAnswer(false, correctAnswer); /*
                 if (correctAnswer == false) {
                   print('user got it right!');
                 } else {
@@ -164,7 +201,7 @@ class _QuizPageState extends State<QuizPage> {
                   print(questionNumber);
                   setIconFalse(correctAnswer);
                 });
-
+*/
                 //The user picked false.
               },
             ),
