@@ -45,7 +45,7 @@ class _QuizPageState extends State<QuizPage> {
       //setIcon(correctAnswer);
     });
 
-  }
+  }    
   void setIconTrue() {
       scoreKeeper.add(
         Icon(
